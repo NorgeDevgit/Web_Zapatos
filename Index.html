@@ -1,42 +1,44 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Web Zapatos</title>
-    <meta name='NorgeDev' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda de Zapatos</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <header id="cabecera"> <!--Cabeza-->
-        <center>
-        <h1> WEB ZAPATOS</h1>
-        <form> <!--Barra de busqueda-->
-            <label for="nomZap">Nombre:</label>
-            <input type="text" id="nomZap" name="bus">
-            <label for="tipoZap">tipo de Zapatos:</label>
-            <select name="tipoZap" id="tipoZap">
-                <option value="Todos">Todos</option>
-                <option value="niño">niño</option>
-                <option value="niña">niña</option>
-                <option value="Mujer">Mujer</option>
-                <option value="Hombre">Hombre</option>
-            </select>
-            <input type="submit" value="Buscar">
-        </form>
-        </center>
-    </header>
-    <main> <!--Cuerpo-->
-    <div class="card">
-        <img src="zapato1.jpg" alt="Zapato elegante">
-        <h3>Zapato elegante</h3>
-        <p>$49.99</p>
-        <button>Comprar</button>
+  <header>
+    <h1>Zapatos</h1>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Buscar por nombre..." />
+      <select id="filter-category">
+        <option value="">Todas las categorías</option>
+        <option value="elegante">Elegante</option>
+        <option value="deportivo">Deportivo</option>
+        <option value="casual">Casual</option>
+      </select>
     </div>
-    </main>
-    <footer>
-        <a href="#cabecera">Volver a la cabecera</a>
-    </footer> <!--Pies-->
+  </header>
+
+  <section id="grid" class="grid"></section>
+  <p class="empty">No se encontraron resultados.</p>
+
+  <template id="card-template">
+    <article class="card">
+      <a class="card-link" href="#">
+        <div class="thumb">
+          <img loading="lazy" alt="">
+        </div>
+        <div class="info">
+          <h3 class="title"></h3>
+          <p class="meta"></p>
+        </div>
+      </a>
+      <div class="price"></div>
+      <button class="buy">Comprar</button>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
 </body>
 </html>
