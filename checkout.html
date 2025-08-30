@@ -70,8 +70,12 @@
     updateTotal();
 
     document.querySelector('.confirm').addEventListener('click', () => {
-      alert(`¡Gracias por tu compra de ${$quantity.value} ${title}!`);
-      // Aquí podrías enviar los datos al servidor o mostrar una página de éxito
+      const qty = parseInt($quantity.value) || 1;
+      const message = `Hola, quiero comprar ${qty} unidad(es) del zapato "${title}".`;
+      const phone = '+5356936619'; // ← Cambia este número por el tuyo en formato internacional sin signos (+53 para Cuba)
+
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
     });
   </script>
 </body>
