@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Web Zapatos</title>
+    <meta name='NorgeDev' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <header id="cabecera"> <!--Cabeza-->
+        <center>
+        <h1> WEB ZAPATOS</h1>
+        <form> <!--Barra de busqueda-->
+            <label for="nomZap">Nombre:</label>
+            <input type="text" id="nomZap" name="bus">
+            <label for="tipoZap">tipo de Zapatos:</label>
+            <select name="tipoZap" id="tipoZap">
+                <option value="Todos">Todos</option>
+                <option value="niño">niño</option>
+                <option value="niña">niña</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Hombre">Hombre</option>
+            </select>
+            <input type="submit" value="Buscar">
+        </form>
+        </center>
+    </header>
+    <main> <!--Cuerpo-->
+    <div class="card">
+        <img src="zapato1.jpg" alt="Zapato elegante">
+        <h3>Zapato elegante</h3>
+        <p>$49.99</p>
+        <button>Comprar</button>
+    </div>
+    </main>
+    <footer>
+        <a href="#cabecera">Volver a la cabecera</a>
+    </footer> <!--Pies-->
+</body>
+</html>

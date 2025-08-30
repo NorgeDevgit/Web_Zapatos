@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirmar compra</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .checkout {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    .checkout img {
+      width: 100%; border-radius: 8px; margin-bottom: 16px;
+    }
+    .checkout h2 { margin-top: 0; }
+    .checkout label { display: block; margin: 12px 0 6px; }
+    .checkout input[type="number"] {
+      width: 100%; padding: 10px; border: 1px solid #ccc;
+      border-radius: 8px; font-size: 16px;
+    }
+    .total {
+      font-size: 18px; font-weight: bold; margin: 16px 0;
+    }
+    .confirm {
+      padding: 12px 16px; background: #111; color: #fff;
+      border: none; border-radius: 10px; font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout">
+    <img id="product-image" src="" alt="">
+    <h2 id="product-title"></h2>
+    <p>Precio unitario: <span id="unit-price"></span></p>
+
+    <label for="quantity">Cantidad:</label>
+    <input type="number" id="quantity" min="1" value="1" />
+
+    <div class="total">Total: <span id="total-price"></span></div>
+
+    <button class="confirm">Confirmar compra</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title');
+    const image = params.get('image');
+    const price = parseFloat(params.get('price'));
+
+    document.getElementById('product-title').textContent = title;
+    document.getElementById('product-image').src = image;
+    document.getElementById('product-image').alt = title;
+    document.getElementById('unit-price').textContent = `$${price.toFixed(2)}`;
+
+    const $quantity = document.getElementById('quantity');
+    const $total = document.getElementById('total-price');
+
+    function updateTotal() {
+      const qty = parseInt($quantity.value) || 1;
+      $total.textContent = `$${(price * qty).toFixed(2)}`;
+    }
+
+    $quantity.addEventListener('input', updateTotal);
+    updateTotal();
+
+    document.querySelector('.confirm').addEventListener('click', () => {
+      alert(`¡Gracias por tu compra de ${$quantity.value} ${title}!`);
+      // Aquí podrías enviar los datos al servidor o mostrar una página de éxito
+    });
+  </script>
+</body>
+</html>
