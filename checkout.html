@@ -47,6 +47,15 @@
     <button class="confirm">Confirmar compra</button>
   </div>
 
+  <!-- Formulario oculto para enviar notificación por email 
+  <form id="notify" action="https://formsubmit.co/tucorreo@ejemplo.com" method="POST" style="display:none;">
+    <input type="hidden" name="Zapato" id="zapato">
+    <input type="hidden" name="Cantidad" id="cantidad">
+    <input type="hidden" name="PrecioTotal" id="precio-total">
+    <input type="hidden" name="_subject" value="Nueva compra desde la tienda">
+    <input type="hidden" name="_captcha" value="false">
+  </form>
+  -->
   <script>
     const params = new URLSearchParams(window.location.search);
     const title = params.get('title');
@@ -71,11 +80,19 @@
 
     document.querySelector('.confirm').addEventListener('click', () => {
       const qty = parseInt($quantity.value) || 1;
+      const total = (price * qty).toFixed(2);
       const message = `Hola, quiero comprar ${qty} unidad(es) del zapato "${title}".`;
-      const phone = '+5356936619'; // ← Cambia este número por el tuyo en formato internacional sin signos (+53 para Cuba)
+      const phone = '5356936619';
 
+      // Enviar mensaje por WhatsApp
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
+
+      // Enviar notificación por email
+      //document.getElementById('zapato').value = title;
+      //document.getElementById('cantidad').value = qty;
+      //document.getElementById('precio-total').value = `$${total}`;
+      //document.getElementById('notify').submit();
     });
   </script>
 </body>
